@@ -1,0 +1,25 @@
+@(username: String,members: Set[String])
+
+@main(username) {
+
+<div class="page-header">
+    <h1>Welcome to Asapp Chat <small>You are chatting as @username</small></h1>
+</div>
+
+<div id="onError" class="alert-message error">
+    <p>
+        <strong>Oops!</strong> <span></span>
+    </p>
+</div>
+
+<div class="row">
+    <div>
+        <h2>Choose a member</h2>
+        <ul id="memberbuttons">
+            @for(member <- members) {
+            <li><span style="color:black"><a href="@routes.HomeController.joinUsers(username,member)">@member</a></span></li>
+            }
+        </ul>
+    </div>
+</div>
+}

@@ -1,0 +1,25 @@
+@(currentPage: Integer, maxPage: Integer, member: String, history: String)
+
+<div id="paginate">
+    <ul class="pagination">
+        @if(currentPage == 1) {
+        <li class="disabled"><span>&laquo;</span></li>
+        } else {
+        <li><a href="@controllers.routes.HomeController.paginator(currentPage - 1,maxPage,member,history)">&laquo;</a></li>
+        }
+
+        @for(index <- 1 to maxPage) {
+        @if(currentPage == index) {
+        <li class="disabled"><span>@index</span></li>
+        } else {
+        <li><a href="@controllers.routes.HomeController.paginator(index,maxPage,member,history)">@index</a></li>
+        }
+        }
+
+        @if(currentPage == maxPage) {
+        <li class="disabled"><span>&raquo;</span></li>
+        } else {
+        <li><a href="@controllers.routes.HomeController.paginator(currentPage + 1,maxPage,member,history)">&raquo;</a></li>
+        }
+    </ul>
+</div>

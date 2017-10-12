@@ -1,0 +1,5 @@
+[0m[[0mdebug[0m] [0mCopy resource mappings: [0m
+[0m[[0mdebug[0m] [0m	(/home/aishwarya/Dev/chat-websocket-akkastream-play2.5/conf/routes,/home/aishwarya/Dev/chat-websocket-akkastream-play2.5/target/scala-2.11/classes/routes)[0m
+[0m[[0mdebug[0m] [0m	(/home/aishwarya/Dev/chat-websocket-akkastream-play2.5/conf/application.conf,/home/aishwarya/Dev/chat-websocket-akkastream-play2.5/target/scala-2.11/classes/application.conf)[0m
+[0m[[0mdebug[0m] [0m	(/home/aishwarya/Dev/chat-websocket-akkastream-play2.5/conf/play.plugins,/home/aishwarya/Dev/chat-websocket-akkastream-play2.5/target/scala-2.11/classes/play.plugins)[0m
+[0m[[0mdebug[0m] [0m	(/home/aishwarya/Dev/chat-websocket-akkastream-play2.5/conf/logback.xml,/home/aishwarya/Dev/chat-websocket-akkastream-play2.5/target/scala-2.11/classes/logback.xml)[0m

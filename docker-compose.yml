@@ -1,0 +1,15 @@
+version: '2'
+services:
+  chat-app:
+    image:
+    build: sbt run
+    ports:
+    - "9000:9000"
+    volumes:
+      - /usr/scr/chat-app/code
+    links:
+    - redis
+  redis:
+    image: redis
+    ports:
+        - "6379:6379"

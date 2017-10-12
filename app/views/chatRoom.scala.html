@@ -1,0 +1,100 @@
+@(email: String, member: String, messages: Collection[String], chatHistory: String, currentPage: Integer,maxPage: Integer)
+
+@display(message: String) = {
+    @for(tag <- message.split("\",\"")) {
+        @if(tag.indexOf("username") != -1) {
+            @for(user <- tag.replace("\"","").split(":")) {
+                @if(user!="username") {
+                    <span>@user : </span>
+                }
+            }
+        }@if(tag.indexOf("message") != -1) {
+            @for(value <- tag.replace("\"","").split(":")) {
+                @if(value!="message") {
+                    <span>@value</span>
+                }
+            }
+        }
+    }
+}
+
+@main(email) {
+    <div class="page-header">
+        <h1>Welcome to Asapp Chat</h1>
+    </div>
+
+    <div id="onError" class="alert-message error">
+        <p>
+            <strong>Oops!</strong> <span></span>
+        </p>
+    </div>
+<div class="container-fluid">
+    <div id="onopen" class="row">
+        <div class="span10" id="main">
+                <ul id="messages" class="media-list">@for(message <- messages) {
+                    <li class="media">
+                        <div class="media-body">
+                            <div class="media">
+                                <div class="media-body">
+                                    @display(message)
+                                </div>
+                            </div>
+                        </div></li>
+                        }</ul>
+            <input id="message"></input>
+            <button id="sendButton" type="submit">Send</button>
+            @pagination(currentPage,maxPage,member,chatHistory)
+        </div>
+        <div class="span4">
+            <h2>Member</h2>
+            <ul id="members">
+                @member
+            </ul>
+        </div>
+    </div>
+</div>
+    <script>
+    window.onload = function() {
+    var chatSocket = new WebSocket("@routes.HomeController.chat().webSocketURL(request)");
+    var username = "@email";
+    var member = "@member";
+    var chatHistory = "@chatHistory";
+    chatSocket.onerror = function(error) {
+            console.log('WebSocket Error: ' + error);
+        };
+
+        chatSocket.onopen = function(event) {
+            $('#status').text('Connected to WebSocket');
+        };
+
+        chatSocket.onmessage = function(event) {
+            var message = JSON.parse(event.data);
+            console.log(message);
+            $('#messages').append('<li class="received">'+message.username+' : '+ message.message + '</li>');
+        };
+
+        chatSocket.onclose = function(event) {
+            $('#status').text('Disconnected from WebSocket.');
+        };
+
+        $('#memberbuttons').click(function(e) {
+            $('#message').removeClass('hide');
+            e.preventDefault();
+            username1 = $('#username').val();
+            console.log(username);
+            chatSocket.send(JSON.stringify({type: 'join', username: username}));
+            $('#username').val('');
+            return false;
+        });
+
+        $('#sendButton').click(function(e) {
+            e.preventDefault();
+            var message = $('#message').val();
+
+            chatSocket.send(JSON.stringify({type: "talk", username: username, chatHistory: chatHistory,chatMessage: message}));
+            $('#message').val('');
+            return false;
+        });
+}
+    </script>
+}
