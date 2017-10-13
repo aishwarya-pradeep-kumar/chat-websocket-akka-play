@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
-// @SOURCE:/home/aishwarya/Dev/chat-websocket-akkastream-play2.5/conf/routes
-// @DATE:Wed Oct 11 23:29:24 EDT 2017
+// @SOURCE:/home/aishwarya/Dev/chat-websocket-akka-play/conf/routes
+// @DATE:Thu Oct 12 18:18:43 EDT 2017
 
 import play.api.mvc.{ QueryStringBindable, PathBindable, Call, JavascriptLiteral }
 import play.core.routing.{ HandlerDef, ReverseRouteContext, queryString, dynamicString }

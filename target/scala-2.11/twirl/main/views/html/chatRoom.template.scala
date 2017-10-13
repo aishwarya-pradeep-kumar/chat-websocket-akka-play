@@ -61,75 +61,65 @@ Seq[Any](format.raw/*1.123*/("""
             <strong>Oops!</strong> <span></span>
         </p>
     </div>
-<div class="container-fluid">
     <div id="onopen" class="row">
         <div class="span10" id="main">
-                <ul id="messages" class="media-list">"""),_display_(/*34.55*/for(message <- messages) yield /*34.79*/ {_display_(Seq[Any](format.raw/*34.81*/("""
-                    """),format.raw/*35.21*/("""<li class="media">
-                        <div class="media-body">
-                            <div class="media">
-                                <div class="media-body">
-                                    """),_display_(/*39.38*/display(message)),format.raw/*39.54*/("""
-                                """),format.raw/*40.33*/("""</div>
-                            </div>
-                        </div></li>
-                        """)))}),format.raw/*43.26*/("""</ul>
-            <input id="message"></input>
-            <button id="sendButton" type="submit">Send</button>
-            """),_display_(/*46.14*/pagination(currentPage,maxPage,member,chatHistory)),format.raw/*46.64*/("""
-        """),format.raw/*47.9*/("""</div>
+                <ul id="messages">"""),_display_(/*33.36*/for(message <- messages) yield /*33.60*/ {_display_(Seq[Any](format.raw/*33.62*/("""
+                    """),format.raw/*34.21*/("""<li>"""),_display_(/*34.26*/display(message)),format.raw/*34.42*/("""</li>""")))}),format.raw/*34.48*/("""</ul>
+            <textarea id="message"></textarea>
+            <button id="sendButton" class="btn primary" type="submit">Send</button>
+        </div>
         <div class="span4">
             <h2>Member</h2>
             <ul id="members">
-                """),_display_(/*51.18*/member),format.raw/*51.24*/("""
-            """),format.raw/*52.13*/("""</ul>
+                """),_display_(/*41.18*/member),format.raw/*41.24*/("""
+            """),format.raw/*42.13*/("""</ul>
         </div>
-    </div>
-</div>
+        """),_display_(/*44.10*/pagination(currentPage,maxPage,member,chatHistory)),format.raw/*44.60*/("""
+    """),format.raw/*45.5*/("""</div>
     <script>
-    window.onload = function() """),format.raw/*57.32*/("""{"""),format.raw/*57.33*/("""
-    """),format.raw/*58.5*/("""var chatSocket = new WebSocket(""""),_display_(/*58.38*/routes/*58.44*/.HomeController.chat().webSocketURL(request)),format.raw/*58.88*/("""");
-    var username = """"),_display_(/*59.22*/email),format.raw/*59.27*/("""";
-    var member = """"),_display_(/*60.20*/member),format.raw/*60.26*/("""";
-    var chatHistory = """"),_display_(/*61.25*/chatHistory),format.raw/*61.36*/("""";
-    chatSocket.onerror = function(error) """),format.raw/*62.42*/("""{"""),format.raw/*62.43*/("""
-            """),format.raw/*63.13*/("""console.log('WebSocket Error: ' + error);
-        """),format.raw/*64.9*/("""}"""),format.raw/*64.10*/(""";
+    window.onload = function() """),format.raw/*47.32*/("""{"""),format.raw/*47.33*/("""
+    """),format.raw/*48.5*/("""var chatSocket = new WebSocket(""""),_display_(/*48.38*/routes/*48.44*/.HomeController.chat().webSocketURL(request)),format.raw/*48.88*/("""");
+    var username = """"),_display_(/*49.22*/email),format.raw/*49.27*/("""";
+    var member = """"),_display_(/*50.20*/member),format.raw/*50.26*/("""";
+    var chatHistory = """"),_display_(/*51.25*/chatHistory),format.raw/*51.36*/("""";
+    chatSocket.onerror = function(error) """),format.raw/*52.42*/("""{"""),format.raw/*52.43*/("""
+            """),format.raw/*53.13*/("""console.log('WebSocket Error: ' + error);
+        """),format.raw/*54.9*/("""}"""),format.raw/*54.10*/(""";
 
-        chatSocket.onopen = function(event) """),format.raw/*66.45*/("""{"""),format.raw/*66.46*/("""
-            """),format.raw/*67.13*/("""$('#status').text('Connected to WebSocket');
-        """),format.raw/*68.9*/("""}"""),format.raw/*68.10*/(""";
+        chatSocket.onopen = function(event) """),format.raw/*56.45*/("""{"""),format.raw/*56.46*/("""
+            """),format.raw/*57.13*/("""$('#status').text('Connected to WebSocket');
+        """),format.raw/*58.9*/("""}"""),format.raw/*58.10*/(""";
 
-        chatSocket.onmessage = function(event) """),format.raw/*70.48*/("""{"""),format.raw/*70.49*/("""
-            """),format.raw/*71.13*/("""var message = JSON.parse(event.data);
+        chatSocket.onmessage = function(event) """),format.raw/*60.48*/("""{"""),format.raw/*60.49*/("""
+            """),format.raw/*61.13*/("""var message = JSON.parse(event.data);
             console.log(message);
             $('#messages').append('<li class="received">'+message.username+' : '+ message.message + '</li>');
-        """),format.raw/*74.9*/("""}"""),format.raw/*74.10*/(""";
+        """),format.raw/*64.9*/("""}"""),format.raw/*64.10*/(""";
 
-        chatSocket.onclose = function(event) """),format.raw/*76.46*/("""{"""),format.raw/*76.47*/("""
-            """),format.raw/*77.13*/("""$('#status').text('Disconnected from WebSocket.');
-        """),format.raw/*78.9*/("""}"""),format.raw/*78.10*/(""";
+        chatSocket.onclose = function(event) """),format.raw/*66.46*/("""{"""),format.raw/*66.47*/("""
+            """),format.raw/*67.13*/("""$('#status').text('Disconnected from WebSocket.');
+        """),format.raw/*68.9*/("""}"""),format.raw/*68.10*/(""";
 
-        $('#memberbuttons').click(function(e) """),format.raw/*80.47*/("""{"""),format.raw/*80.48*/("""
-            """),format.raw/*81.13*/("""$('#message').removeClass('hide');
+        $('#memberbuttons').click(function(e) """),format.raw/*70.47*/("""{"""),format.raw/*70.48*/("""
+            """),format.raw/*71.13*/("""$('#message').removeClass('hide');
             e.preventDefault();
             username1 = $('#username').val();
             console.log(username);
-            chatSocket.send(JSON.stringify("""),format.raw/*85.44*/("""{"""),format.raw/*85.45*/("""type: 'join', username: username"""),format.raw/*85.77*/("""}"""),format.raw/*85.78*/("""));
+            chatSocket.send(JSON.stringify("""),format.raw/*75.44*/("""{"""),format.raw/*75.45*/("""type: 'join', username: username"""),format.raw/*75.77*/("""}"""),format.raw/*75.78*/("""));
             $('#username').val('');
             return false;
-        """),format.raw/*88.9*/("""}"""),format.raw/*88.10*/(""");
+        """),format.raw/*78.9*/("""}"""),format.raw/*78.10*/(""");
 
-        $('#sendButton').click(function(e) """),format.raw/*90.44*/("""{"""),format.raw/*90.45*/("""
-            """),format.raw/*91.13*/("""e.preventDefault();
+        $('#sendButton').click(function(e) """),format.raw/*80.44*/("""{"""),format.raw/*80.45*/("""
+            """),format.raw/*81.13*/("""e.preventDefault();
             var message = $('#message').val();
 
-            chatSocket.send(JSON.stringify("""),format.raw/*94.44*/("""{"""),format.raw/*94.45*/("""type: "talk", username: username, chatHistory: chatHistory,chatMessage: message"""),format.raw/*94.124*/("""}"""),format.raw/*94.125*/("""));
+            chatSocket.send(JSON.stringify("""),format.raw/*84.44*/("""{"""),format.raw/*84.45*/("""type: "talk", username: username, chatHistory: chatHistory,chatMessage: message"""),format.raw/*84.124*/("""}"""),format.raw/*84.125*/("""));
             $('#message').val('');
             return false;
-        """),format.raw/*97.9*/("""}"""),format.raw/*97.10*/(""");
-"""),format.raw/*98.1*/("""}"""),format.raw/*98.2*/("""
-    """),format.raw/*99.5*/("""</script>
+        """),format.raw/*87.9*/("""}"""),format.raw/*87.10*/(""");
+"""),format.raw/*88.1*/("""}"""),format.raw/*88.2*/("""
+    """),format.raw/*89.5*/("""</script>
 """)))}))
       }
     }
@@ -150,11 +140,11 @@ Seq[Any](format.raw/*1.123*/("""
 object chatRoom extends chatRoom_Scope0.chatRoom
               /*
                   -- GENERATED --
-                  DATE: Thu Oct 12 01:02:01 EDT 2017
-                  SOURCE: /home/aishwarya/Dev/chat-websocket-akkastream-play2.5/app/views/chatRoom.scala.html
-                  HASH: 92d1df9ac47fb163a9d2bea55dbf03469e984e21
-                  MATRIX: 800->1|999->125|1013->132|1110->153|1141->159|1190->193|1229->195|1265->205|1306->238|1345->240|1385->254|1444->298|1483->300|1527->318|1555->338|1594->340|1642->361|1675->368|1699->372|1727->373|1784->400|1829->414|1870->425|1911->457|1951->459|1992->473|2053->518|2093->520|2138->538|2167->558|2207->560|2256->581|2290->588|2316->593|2372->618|2417->632|2458->642|2494->648|2536->122|2565->650|2594->653|2614->664|2654->666|2686->671|3083->1041|3123->1065|3163->1067|3212->1088|3449->1298|3486->1314|3547->1347|3681->1450|3832->1574|3903->1624|3939->1633|4076->1743|4103->1749|4144->1762|4255->1845|4284->1846|4316->1851|4376->1884|4391->1890|4456->1934|4508->1959|4534->1964|4583->1986|4610->1992|4664->2019|4696->2030|4768->2074|4797->2075|4838->2088|4915->2138|4944->2139|5019->2186|5048->2187|5089->2200|5169->2253|5198->2254|5276->2304|5305->2305|5346->2318|5563->2508|5592->2509|5668->2557|5697->2558|5738->2571|5824->2630|5853->2631|5930->2680|5959->2681|6000->2694|6219->2885|6248->2886|6308->2918|6337->2919|6438->2993|6467->2994|6542->3041|6571->3042|6612->3055|6751->3166|6780->3167|6888->3246|6918->3247|7018->3320|7047->3321|7077->3324|7105->3325|7137->3330
-                  LINES: 27->1|31->3|31->3|33->3|34->4|34->4|34->4|35->5|35->5|35->5|36->6|36->6|36->6|37->7|37->7|37->7|38->8|38->8|38->8|38->8|39->9|40->10|41->11|41->11|41->11|42->12|42->12|42->12|43->13|43->13|43->13|44->14|44->14|44->14|45->15|46->16|47->17|48->18|50->1|52->19|54->21|54->21|54->21|55->22|67->34|67->34|67->34|68->35|72->39|72->39|73->40|76->43|79->46|79->46|80->47|84->51|84->51|85->52|90->57|90->57|91->58|91->58|91->58|91->58|92->59|92->59|93->60|93->60|94->61|94->61|95->62|95->62|96->63|97->64|97->64|99->66|99->66|100->67|101->68|101->68|103->70|103->70|104->71|107->74|107->74|109->76|109->76|110->77|111->78|111->78|113->80|113->80|114->81|118->85|118->85|118->85|118->85|121->88|121->88|123->90|123->90|124->91|127->94|127->94|127->94|127->94|130->97|130->97|131->98|131->98|132->99
+                  DATE: Thu Oct 12 21:34:23 EDT 2017
+                  SOURCE: /home/aishwarya/Dev/chat-websocket-akka-play/app/views/chatRoom.scala.html
+                  HASH: ca76b195b60399c7ae59f0a4740f5da77ef18199
+                  MATRIX: 800->1|999->125|1013->132|1110->153|1141->159|1190->193|1229->195|1265->205|1306->238|1345->240|1385->254|1444->298|1483->300|1527->318|1555->338|1594->340|1642->361|1675->368|1699->372|1727->373|1784->400|1829->414|1870->425|1911->457|1951->459|1992->473|2053->518|2093->520|2138->538|2167->558|2207->560|2256->581|2290->588|2316->593|2372->618|2417->632|2458->642|2494->648|2536->122|2565->650|2594->653|2614->664|2654->666|2686->671|3034->992|3074->1016|3114->1018|3163->1039|3195->1044|3232->1060|3269->1066|3551->1321|3578->1327|3619->1340|3676->1370|3747->1420|3779->1425|3858->1476|3887->1477|3919->1482|3979->1515|3994->1521|4059->1565|4111->1590|4137->1595|4186->1617|4213->1623|4267->1650|4299->1661|4371->1705|4400->1706|4441->1719|4518->1769|4547->1770|4622->1817|4651->1818|4692->1831|4772->1884|4801->1885|4879->1935|4908->1936|4949->1949|5166->2139|5195->2140|5271->2188|5300->2189|5341->2202|5427->2261|5456->2262|5533->2311|5562->2312|5603->2325|5822->2516|5851->2517|5911->2549|5940->2550|6041->2624|6070->2625|6145->2672|6174->2673|6215->2686|6354->2797|6383->2798|6491->2877|6521->2878|6621->2951|6650->2952|6680->2955|6708->2956|6740->2961
+                  LINES: 27->1|31->3|31->3|33->3|34->4|34->4|34->4|35->5|35->5|35->5|36->6|36->6|36->6|37->7|37->7|37->7|38->8|38->8|38->8|38->8|39->9|40->10|41->11|41->11|41->11|42->12|42->12|42->12|43->13|43->13|43->13|44->14|44->14|44->14|45->15|46->16|47->17|48->18|50->1|52->19|54->21|54->21|54->21|55->22|66->33|66->33|66->33|67->34|67->34|67->34|67->34|74->41|74->41|75->42|77->44|77->44|78->45|80->47|80->47|81->48|81->48|81->48|81->48|82->49|82->49|83->50|83->50|84->51|84->51|85->52|85->52|86->53|87->54|87->54|89->56|89->56|90->57|91->58|91->58|93->60|93->60|94->61|97->64|97->64|99->66|99->66|100->67|101->68|101->68|103->70|103->70|104->71|108->75|108->75|108->75|108->75|111->78|111->78|113->80|113->80|114->81|117->84|117->84|117->84|117->84|120->87|120->87|121->88|121->88|122->89
                   -- GENERATED --
               */
           

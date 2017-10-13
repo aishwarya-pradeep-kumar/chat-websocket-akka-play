@@ -28,22 +28,12 @@
             <strong>Oops!</strong> <span></span>
         </p>
     </div>
-<div class="container-fluid">
     <div id="onopen" class="row">
         <div class="span10" id="main">
-                <ul id="messages" class="media-list">@for(message <- messages) {
-                    <li class="media">
-                        <div class="media-body">
-                            <div class="media">
-                                <div class="media-body">
-                                    @display(message)
-                                </div>
-                            </div>
-                        </div></li>
-                        }</ul>
-            <input id="message"></input>
-            <button id="sendButton" type="submit">Send</button>
-            @pagination(currentPage,maxPage,member,chatHistory)
+                <ul id="messages">@for(message <- messages) {
+                    <li>@display(message)</li>}</ul>
+            <textarea id="message"></textarea>
+            <button id="sendButton" class="btn primary" type="submit">Send</button>
         </div>
         <div class="span4">
             <h2>Member</h2>
@@ -51,8 +41,8 @@
                 @member
             </ul>
         </div>
+        @pagination(currentPage,maxPage,member,chatHistory)
     </div>
-</div>
     <script>
     window.onload = function() {
     var chatSocket = new WebSocket("@routes.HomeController.chat().webSocketURL(request)");

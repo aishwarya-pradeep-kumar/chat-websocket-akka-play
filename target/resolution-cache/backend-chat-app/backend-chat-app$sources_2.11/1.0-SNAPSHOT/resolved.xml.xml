@@ -4,7 +4,7 @@
 		module="backend-chat-app$sources_2.11"
 		revision="1.0-SNAPSHOT"
 		status="integration"
-		publication="20171007112623"
+		publication="20171013005627"
 	/>
 	<configurations>
 		<conf name="compile" visibility="public" description=""/>

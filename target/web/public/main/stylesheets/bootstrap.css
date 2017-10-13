@@ -216,7 +216,7 @@ body {
   content: "";
   zoom: 1;
 }
-.container-fluid:after {
+    .container-fluid:after {
   clear: both;
 }
 .container-fluid > .sidebar {
@@ -428,6 +428,7 @@ h1 small {
 h2 {
   font-size: 24px;
   line-height: 36px;
+  margin-left: 5px;
 }
 h2 small {
   font-size: 14px;
@@ -1422,7 +1423,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   left: 0;
 }
 .topbar div > ul > li, .nav > li {
-  display: block;
+
 }
 .topbar div > ul a, .nav a {
   display: block;
@@ -2098,6 +2099,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 .pagination {
   height: 36px;
   margin: 18px 0;
+  margin-left: 20px;
 }
 .pagination ul {
   float: left;
@@ -2112,7 +2114,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 .pagination li {
-  display: inline;
+  display: inline-block;
 }
 .pagination a {
   float: left;

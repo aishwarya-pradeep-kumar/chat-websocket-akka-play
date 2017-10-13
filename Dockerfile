@@ -21,20 +21,16 @@ RUN apk add --no-cache git openssh
 # in the container /root directory
 
 ENV PROJECT_HOME /usr/scr
-ENV PROJECT_NAME chat-app
+ENV PROJECT_NAME chatapp
 
 
 COPY ./ ${PROJECT_HOME}/${PROJECT_NAME}
 RUN cd $PROJECT_HOME/$PROJECT_NAME && \
     sbt compile
 
-## Command
-#ENTRYPOINT ["docker","run","--rm","-it","-v",""${PWD}:/code"","-p","9000:9000","chatapp","sbt","run"
-
 # Expose code volume and play port 9000
 EXPOSE 9000
 
-VOLUME "/code"
 WORKDIR /code
 
-CMD ["sbt"]
+CMD ["sbt","run"]

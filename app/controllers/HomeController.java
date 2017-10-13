@@ -111,9 +111,9 @@ public class HomeController extends Controller {
             }
             //if chat history exists get it else create new
             if(jedis.exists(chatHistory)) {
-                messages = jedis.lrange(chatHistory, 0,14 );
+                messages = jedis.lrange(chatHistory, 0,9 );
             }
-            maxPage = (int) Math.ceil(jedis.llen(chatHistory)/15L);
+            maxPage = (int) Math.ceil(jedis.llen(chatHistory)/10L)+1;
         }
         return ok(views.html.chatRoom.render(email,member,messages,chatHistory,1,(maxPage==0)?1:maxPage));
     }
@@ -125,8 +125,8 @@ public class HomeController extends Controller {
             Jedis jedis = jedisPool.getResource();
             if(jedis.exists(history))
             {
-                long current = (long)((currentPage-1)*15);
-                long noOfMess = (long)(currentPage*15-1);
+                long current = (long)((currentPage-1)*10);
+                long noOfMess = (long)(currentPage*10-1);
                 messages = jedis.lrange(history,current,noOfMess);
             }
         }

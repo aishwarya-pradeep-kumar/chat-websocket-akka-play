@@ -17,7 +17,7 @@
         <h2>Choose a member</h2>
         <ul id="memberbuttons">
             @for(member <- members) {
-            <li><span style="color:black"><a href="@routes.HomeController.joinUsers(username,member)">@member</a></span></li>
+            <li style="color:black;list-style-type: none;"><a href="@routes.HomeController.joinUsers(username,member)">@member</a></li>
             }
         </ul>
     </div>
