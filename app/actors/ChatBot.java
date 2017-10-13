@@ -31,8 +31,8 @@ public class ChatBot {
 
         // Make the robot talk every 30 seconds
         Akka.system().scheduler().schedule(
-                Duration.create(10, MINUTES),
-                Duration.create(10, MINUTES),
+                Duration.create(20, MINUTES),
+                Duration.create(20, MINUTES),
                 chat,
                 chatBotTalk,
                 Akka.system().dispatcher(),

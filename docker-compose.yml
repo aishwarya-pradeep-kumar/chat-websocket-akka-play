@@ -6,10 +6,10 @@ services:
     - "9000:9000"
     volumes:
     - ".:/code"
-    stdin_open: true
-    tty: true
     links:
     - redis
+    stdin_open: true
+    tty: true
   redis:
     image: redis
     ports:

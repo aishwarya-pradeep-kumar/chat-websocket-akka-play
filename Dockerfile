@@ -33,4 +33,4 @@ EXPOSE 9000
 
 WORKDIR /code
 
-CMD ["sbt","run"]
+CMD ["sbt", "run"]
