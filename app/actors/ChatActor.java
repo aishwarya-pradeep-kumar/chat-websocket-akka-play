@@ -22,7 +22,7 @@ import static controllers.HomeController.publisher;
 
 public class ChatActor extends UntypedActor {
 
-    public JedisPool jedisPool = new JedisPool("localhost");
+    public JedisPool jedisPool = new JedisPool("redis");
     private final LoggingAdapter logger = Logging.getLogger(getContext().system(), this);
 
     @Override
@@ -83,7 +83,7 @@ public class ChatActor extends UntypedActor {
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
-            URLConnection urlConnectionq = null;
+            URLConnection urlConnection = null;
             try {
                 urlConnection = obj.openConnection();
             } catch (IOException e) {

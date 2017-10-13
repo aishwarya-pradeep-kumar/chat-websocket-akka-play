@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
-// @SOURCE:/home/aishwarya/Dev/chat-websocket-akka-play/conf/routes
-// @DATE:Thu Oct 12 18:18:43 EDT 2017
+// @SOURCE:/code/conf/routes
+// @DATE:Fri Oct 13 10:25:25 GMT 2017
 
 package router
 

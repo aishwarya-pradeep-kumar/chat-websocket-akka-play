@@ -82,8 +82,8 @@ Seq[Any](format.raw/*2.1*/("""<!DOCTYPE html>
 object addUser extends addUser_Scope0.addUser
               /*
                   -- GENERATED --
-                  DATE: Thu Oct 12 18:18:44 EDT 2017
-                  SOURCE: /home/aishwarya/Dev/chat-websocket-akka-play/app/views/addUser.scala.html
+                  DATE: Fri Oct 13 10:25:25 GMT 2017
+                  SOURCE: /code/app/views/addUser.scala.html
                   HASH: 6961777e645a4f58e7e02813b3c54e138237425f
                   MATRIX: 831->1|967->111|981->117|1048->163|1126->215|1140->221|1201->262|1284->319|1298->325|1358->364|1406->385|1421->391|1494->443|1732->654|1747->660|1791->683|1889->754|1904->760|1950->785
                   LINES: 32->2|37->7|37->7|37->7|38->8|38->8|38->8|39->9|39->9|39->9|40->10|40->10|40->10|47->17|47->17|47->17|49->19|49->19|49->19

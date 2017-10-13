@@ -67,8 +67,8 @@ Seq[Any](_display_(/*1.2*/main(null)/*1.12*/ {_display_(Seq[Any](format.raw/*1.1
 object index extends index_Scope0.index
               /*
                   -- GENERATED --
-                  DATE: Thu Oct 12 18:18:44 EDT 2017
-                  SOURCE: /home/aishwarya/Dev/chat-websocket-akka-play/app/views/index.scala.html
+                  DATE: Fri Oct 13 10:25:25 GMT 2017
+                  SOURCE: /code/app/views/index.scala.html
                   HASH: 62346e1d648f92ec6f58b1b68918f2390f112f17
                   MATRIX: 827->1|845->11|884->13|912->16|950->46|989->48|1017->50|1117->124|1130->129|1163->142|1194->147|1238->161|1266->162
                   LINES: 32->1|32->1|32->1|34->3|34->3|34->3|36->5|38->7|38->7|38->7|39->8|42->11|43->12

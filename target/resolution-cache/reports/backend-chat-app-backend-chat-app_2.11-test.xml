@@ -7,7 +7,7 @@
 		revision="1.0-SNAPSHOT"
 		conf="test"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
-		date="20171013052411"/>
+		date="20171013102511"/>
 	<dependencies>
 		<module organisation="org.awaitility" name="awaitility">
 			<revision name="2.0.0" status="release" pubdate="20160617113547" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://awaitility.org" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="144">

@@ -13,6 +13,7 @@ import akka.stream.javadsl.Source;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import play.data.DynamicForm;
 import play.data.FormFactory;
 import play.mvc.*;
@@ -36,12 +37,14 @@ public class HomeController extends Controller {
     private ActorSystem actorSystem = ActorSystem.create();
     private ActorRef chatRoomActor = actorSystem.actorOf(Props.create(ChatActor.class));
     public static final Publisher<JsonNode> publisher = new Publisher<>();
+    private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
     public Result index() {
         return ok(index.render());
     }
 
     public Result login() {
+        logger.info("Jedis Host"+jedisPool.toString());
         Set<String> members = new HashSet<>();
         DynamicForm dynamicForm = formFactory.form().bindFromRequest();
         String localEmail= dynamicForm.get("email");
