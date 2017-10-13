@@ -30,14 +30,20 @@ Why use WebSocket?
 4) I have not implemented a mechanism to disconnect and reconnect in case of network unstability (Although there is a chatbot that tries to keep the session alive).
 
 Why use Akka Streams?
--------------
+---------------------
 1) Each actor is assigned its own light-weight thread and runs within that thread.
 2) By using streams we get the added benefit of backpressure, a form of flow control which limits the incoming messages until there is demand downstream
 
-The app handles the below scenarios:
-![](https://media.giphy.com/media/xT9IgNBfKIX6LB5syc/giphy.gif)
+Backend Used
+-------------
+1) Just used a redis cache to store information.
+2) Did not give much attention to model creation and ORM.
+3) Store users as Hashes O(1) complexity.
+4) Conversation history is stored as a list (to maintain order - O(n) complexity).
 
-* Create User
+The app handles the below scenarios: ![](https://media.giphy.com/media/xT9IgNBfKIX6LB5syc/giphy.gif)
+
+* Create User - **Create two users atleast so that you can chat with the other person**
 	
 Takes a username and password and creates a new user in a persisted data store. For example, the endpoint might accept PUT or POST at /users.
 
