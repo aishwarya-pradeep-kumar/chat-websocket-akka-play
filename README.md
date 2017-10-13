@@ -1,5 +1,10 @@
 The Details
 -----------
+Architecture overview:
+----------------------
+# WebSocket: Communication between the client and server
+# Parallel processing using Akka toolkit
+# Backend using Redis
 
 Framework used for server: Play Framework
 
@@ -12,13 +17,13 @@ public Result index() {
     return ok("Got request " + request() + "!");
 }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+4) Integration with Akka is easy
 The application is configured to start a Netty Server.
 Currently the API return text/html content type, this can be changed easily to accomodate JSON (I tried to focus on building a non-blocking scalable application)
 
 Why use WebSocket?
-
-Low-latency two-way communication becomes possible on a single connection if you implement WebSocket. By using WebSocket, the server can broadcast the massive tide of comments to the users in real-time. Not only that, sending an HTTP request is no longer required every time a user sends a comment, allowing more resources to be used efficiently.
+# Low-latency two-way communication becomes possible on a single connection if you implement WebSocket. 
+# Sending an HTTP request is no longer required every time a user sends a message, allowing more resources to be used efficiently.
 
 When messages are transmitted over a single connection, both the servers and clients need to know the payload format to handle payloads properly. This is because they cannot separate the response format by the type of endpoints as they would normally do with Web API. The live chat implementation uses JSON payload format. And we've added one common field to the JSON format that indicates what each payload represents so that every one of them can be mapped to the corresponding class. This approach has enabled us to easily define a new payload type, such as a payload for implementing a pre-paid gift.
 
@@ -61,3 +66,5 @@ Suggestions
 * Please include a sample request (cURL commands, Postman collection, etc) for each of your API endpoints.
 * Please don't use the trademark ASAPP in the project. We hope the project is work that you're proud of, and we want you to be able to share it with others or make it public should you wish to.
 * Have fun!
+
+Resource: https://engineering.linecorp.com/en/blog/detail/85
