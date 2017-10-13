@@ -1,18 +1,28 @@
-ASAPP Backend Challenge
-=======================
-
-Welcome to your challenge project!
-
-For this challenge, we ask that you implement a solution at home in your own time. When you're ready, please send us your results - including code, schema definitions, commit history if available, and (if you're not using the starter kit) a readme with setup instructions.
-
-
 The Details
 -----------
 
-Your challenge is to design and implement a basic chat backend. While building a frontend isn't part of this challenge, it helps to keep in mind how a client would interact with your server and what the experience will be like for the end user.
+Framework used for server: Play Framework
 
-Your API should be exposed in a format that can be called from a web app or mobile client - for example, JSON and HTTP. Your server should support the following requests:
+Why use Play Framework?
+1) It's great for building a quick MVC
+2) Play handles every request in an asynchronous, non-blocking way.
+3) The controller code below, the returned Result is internally enclosed in a promise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+public Result index() {
+    return ok("Got request " + request() + "!");
+}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+The application is configured to start a Netty Server.
+Currently the API return text/html content type, this can be changed easily to accomodate JSON (I tried to focus on building a non-blocking scalable application)
+
+Why use WebSocket?
+
+Low-latency two-way communication becomes possible on a single connection if you implement WebSocket. By using WebSocket, the server can broadcast the massive tide of comments to the users in real-time. Not only that, sending an HTTP request is no longer required every time a user sends a comment, allowing more resources to be used efficiently.
+
+When messages are transmitted over a single connection, both the servers and clients need to know the payload format to handle payloads properly. This is because they cannot separate the response format by the type of endpoints as they would normally do with Web API. The live chat implementation uses JSON payload format. And we've added one common field to the JSON format that indicates what each payload represents so that every one of them can be mapped to the corresponding class. This approach has enabled us to easily define a new payload type, such as a payload for implementing a pre-paid gift.
+
+Sometimes connections go on and off especially when watching a particularly long live-stream on a mobile device. To prevent such connection problems, we keep watch on the payload transmissions and have the connection disconnect and reconnect when the network seems unstable.
 * Create User
 	
 Takes a username and password and creates a new user in a persisted data store. For example, the endpoint might accept PUT or POST at /users.
@@ -51,12 +61,3 @@ Suggestions
 * Please include a sample request (cURL commands, Postman collection, etc) for each of your API endpoints.
 * Please don't use the trademark ASAPP in the project. We hope the project is work that you're proud of, and we want you to be able to share it with others or make it public should you wish to.
 * Have fun!
-
-
-Follow-up discussion
---------------------
-We’ll discuss this as part of the project review. Don't worry if you don't have all the answers off the top of your head. We’re very much looking for your ability to reason about and work through these kinds of questions.
-
-How well does your project scale? What if the number of users grow to 1000? To 1000000? (And the conversation history grows too.)
-
-What if you had users around the globe? How do you keep the application responsive? (Latency becomes problematic if you’re still running in just one region. But if you have servers in Japan and servers in the US, how do they coordinate?)
