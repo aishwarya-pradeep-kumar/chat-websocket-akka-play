@@ -4,7 +4,7 @@
 		module="backend-chat-app_2.11"
 		revision="1.0-SNAPSHOT"
 		status="integration"
-		publication="20171013005225"
+		publication="20171013052411"
 	>
 		<description>
 		backend-chat-app

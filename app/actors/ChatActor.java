@@ -75,10 +75,6 @@ public class ChatActor extends UntypedActor {
         String metaData = "text";
         JsonNode talkToClient = Json.newObject();
         for (Url url : stringUrl) {
-            logger.info("Scheme: " + url.getScheme());
-            logger.info("Host: " + url.getHost());
-            logger.info("Path: " + url.getPath());
-
             //Get HTTP Header for metadata
             //Not handling redirects
             URL obj = null;
@@ -87,13 +83,13 @@ public class ChatActor extends UntypedActor {
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
-            URLConnection conn = null;
+            URLConnection urlConnectionq = null;
             try {
-                conn = obj.openConnection();
+                urlConnection = obj.openConnection();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Map<String, List<String>> map = conn.getHeaderFields();
+            Map<String, List<String>> map = urlConnection.getHeaderFields();
 
             for (Map.Entry<String, List<String>> entry : map.entrySet()) {
                 metaData += entry.getKey() + " : " + entry.getValue();
