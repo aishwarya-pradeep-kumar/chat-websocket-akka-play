@@ -35,7 +35,7 @@ Why use Akka Streams?
 2) By using streams we get the added benefit of backpressure, a form of flow control which limits the incoming messages until there is demand downstream
 
 The app handles the below scenarios:
-![]()
+![](https://media.giphy.com/media/xT9IgNBfKIX6LB5syc/giphy.gif)
 
 * Create User
 	
