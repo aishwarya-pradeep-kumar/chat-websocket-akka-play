@@ -1,5 +1,0 @@
-[0m[[0mdebug[0m] [0mCopy resource mappings: [0m
-[0m[[0mdebug[0m] [0m	(/code/conf/routes,/code/target/scala-2.11/classes/routes)[0m
-[0m[[0mdebug[0m] [0m	(/code/conf/application.conf,/code/target/scala-2.11/classes/application.conf)[0m
-[0m[[0mdebug[0m] [0m	(/code/conf/play.plugins,/code/target/scala-2.11/classes/play.plugins)[0m
-[0m[[0mdebug[0m] [0m	(/code/conf/logback.xml,/code/target/scala-2.11/classes/logback.xml)[0m

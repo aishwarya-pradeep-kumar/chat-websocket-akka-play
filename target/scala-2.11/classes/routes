@@ -1,8 +1,0 @@
-GET     /                           controllers.HomeController.index()
-
-POST    /signup                     controllers.HomeController.addUser()
-GET     /login                      controllers.HomeController.login()
-GET     /chat                       controllers.HomeController.chat()
-GET     /joinUsers                  controllers.HomeController.joinUsers(email,member)
-GET     /paginate                   controllers.HomeController.paginator(currentPage:Integer,maxPage:Integer,member: String,history: String)
-GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
